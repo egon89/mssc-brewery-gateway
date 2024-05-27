@@ -1,4 +1,4 @@
-package com.egon89.mssc_brewery_gateway;
+package com.egon89;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

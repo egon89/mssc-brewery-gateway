@@ -1,4 +1,4 @@
-package com.egon89.mssc_brewery_gateway;
+package com.egon89;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
