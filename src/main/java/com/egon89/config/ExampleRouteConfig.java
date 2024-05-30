@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Profile;
 
 @Profile("example")
 @Configuration
-public class ExampleRoute {
+public class ExampleRouteConfig {
 
-  @Bean
+  @Bean("exampleRouteBean")
   public RouteLocator exampleRouteConfig(RouteLocatorBuilder builder) {
     System.out.println("example route config init");
     return builder.routes()
