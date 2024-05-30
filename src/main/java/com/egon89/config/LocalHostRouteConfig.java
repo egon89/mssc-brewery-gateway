@@ -13,8 +13,10 @@ public class LocalHostRouteConfig {
   public RouteLocator localHostRouteConfig(RouteLocatorBuilder builder) {
     System.out.println("local host route config");
     return builder.routes()
-        .route(r -> r.path("/api/v1/beers*", "/api/v1/beers/*", "/api/v1/beers/upc/*")
+        .route("beer-service", r -> r.path("/api/v1/beers*", "/api/v1/beers/*", "/api/v1/beers/upc/*")
             .uri("http://localhost:8080"))
+        .route("order-service", r -> r.path("/customers**", "/customers/**")
+            .uri("http://localhost:8081"))
         .build();
   }
 }
