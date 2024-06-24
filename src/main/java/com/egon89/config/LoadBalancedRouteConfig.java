@@ -24,7 +24,14 @@ public class LoadBalancedRouteConfig {
         .route("order-service", r -> r.path("/customers**", "/customers/**")
             .uri("lb://order-service"))
         .route("beer-inventory-service", r -> r.path("/beers/*/inventory")
+            .filters(filter ->
+                filter.circuitBreaker(
+                  config -> config.setName("inventoryCircuitBreaker")
+                      .setFallbackUri("forward:/inventory-fail-over")
+                      .setRouteId("inv-fail-over")))
             .uri("lb://beer-inventory-service"))
+        .route("inventory-fail-over-service", r -> r.path("/inventory-fail-over/**")
+            .uri("lb://inventory-fail-over-service"))
         .build();
   }
 }
